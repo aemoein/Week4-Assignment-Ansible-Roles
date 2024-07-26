@@ -1,0 +1,19 @@
+# roles/nginx_container/tasks/main.yml
+---
+- name: Ensure Docker is installed
+  apt:
+    name: docker-ce
+    state: present
+
+- name: Pull the latest Nginx image
+  docker_image:
+    name: nginx
+    source: pull
+
+- name: Run Nginx container
+  docker_container:
+    name: nginx
+    image: nginx
+    state: started
+    ports:
+      - "3000:80"

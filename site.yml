@@ -1,0 +1,8 @@
+# site.yml
+---
+- hosts: localhost
+  become: yes
+  connection: local
+  roles:
+    - docker_setup
+    - nginx_container
